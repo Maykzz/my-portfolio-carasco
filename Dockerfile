@@ -27,8 +27,17 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www/html
 
-# Copy all application files first
+# Copy composer files first
+COPY composer.json composer.lock ./
+
+# Install dependencies (ignore platform requirements for Railway compatibility)
+RUN composer install --no-dev --no-scripts --no-autoloader --ignore-platform-reqs
+
+# Copy application files
 COPY . .
+
+# Complete composer setup
+RUN composer dump-autoload --optimize
 
 # Create necessary directories and set permissions
 RUN mkdir -p storage/logs storage/framework/cache storage/framework/sessions storage/framework/views \
@@ -37,12 +46,8 @@ RUN mkdir -p storage/logs storage/framework/cache storage/framework/sessions sto
     && chmod -R 755 /var/www/html \
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader --no-interaction
-
-# Generate application key if needed
-RUN if [ ! -f .env ]; then cp .env.example .env; fi \
-    && php artisan key:generate --no-interaction || true
+# Copy environment file if needed
+RUN if [ ! -f .env ]; then cp .env.example .env; fi
 
 # Configure Apache
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
