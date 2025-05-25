@@ -180,15 +180,15 @@
                             <p class="text-muted">Philippine Standard Time (UTC+8)</p>
                         </div>
                     </div>                    <div class="social-links mt-4">
-                        <a href="https://github.com/mikecarasco" target="_blank" class="social-btn github-btn me-3 mb-2">
+                        <a href="https://github.com/Maykzz" target="_blank" class="social-btn github-btn me-3 mb-2">
                             <i class="fab fa-github"></i>
                             <span>GitHub</span>
                         </a>
-                        <a href="https://t.me/mikecarasco" target="_blank" class="social-btn telegram-btn me-3 mb-2">
+                        <a href="https://t.me/mattzyyyy" target="_blank" class="social-btn telegram-btn me-3 mb-2">
                             <i class="fab fa-telegram-plane"></i>
                             <span>Telegram</span>
                         </a>
-                        <a href="https://instagram.com/mikecarasco" target="_blank" class="social-btn instagram-btn mb-2">
+                        <a href="https://www.instagram.com/ur_maykz/" target="_blank" class="social-btn instagram-btn mb-2">
                             <i class="fab fa-instagram"></i>
                             <span>Instagram</span>
                         </a>

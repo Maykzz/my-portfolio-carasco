@@ -90,7 +90,7 @@
                             <a href="#" class="btn btn-outline-light btn-sm me-2 mb-2" title="Twitter">
                                 <i class="fab fa-twitter"></i>
                             </a>
-                            <a href="mailto:mike@example.com" class="btn btn-outline-light btn-sm mb-2" title="Email">
+                            <a href="mailto:maykzmatt@gmail.com" class="btn btn-outline-light btn-sm mb-2" title="Email">
                                 <i class="fas fa-envelope"></i>
                             </a>
                         </div>
