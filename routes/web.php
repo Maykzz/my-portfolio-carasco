@@ -14,6 +14,16 @@ use App\Http\Controllers\SiteController;
 |
 */
 
+// Health Check Route for Railway
+Route::get('/health', function () {
+    return response()->json([
+        'status' => 'healthy',
+        'timestamp' => now(),
+        'app' => config('app.name'),
+        'version' => '1.0.0'
+    ]);
+});
+
 // Portfolio Routes
 Route::get('/', [SiteController::class, 'home'])->name('home');
 Route::get('/about', [SiteController::class, 'about'])->name('about');
