@@ -1,0 +1,17 @@
+node_modules
+.git
+tests
+.phpunit.result.cache
+storage/logs/_
+storage/framework/cache/_
+storage/framework/sessions/_
+storage/framework/views/_
+bootstrap/cache/\*
+.env.local
+.env.development
+.env.test
+README.md
+.gitignore
+phpunit.xml
+package.json
+vite.config.js
