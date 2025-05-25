@@ -29,10 +29,14 @@
                     </div>
                 </div>
                 <div class="col-lg-6 text-center animate-on-scroll" data-delay="300">
-                    <div class="profile-image-container animate-pulse">
-                        <img src="{{ asset('images/profile.jpg') }}" alt="Mike Carasco"
-                            class="img-fluid rounded-circle shadow-lg profile-image animate-image"
-                            style="width: 300px; height: 300px; object-fit: cover;">
+                    <div class="profile-image-container">
+                        <div class="profile-image-wrapper">
+                            <img src="{{ asset('images/profile.jpg') }}" alt="Mike Carasco"
+                                class="img-fluid rounded-circle shadow-lg profile-image"
+                                style="width: 300px; height: 300px; object-fit: cover;">
+                            <div class="profile-border-ring"></div>
+                            <div class="profile-glow"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -159,13 +163,128 @@
             }
         }
 
+        .profile-image-container {
+            position: relative;
+            display: inline-block;
+            margin: 2rem 0;
+        }
+
+        .profile-image-wrapper {
+            position: relative;
+            display: inline-block;
+            animation: profileFloat 6s ease-in-out infinite;
+        }
+
         .profile-image {
-            border: 5px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease;
+            border: 4px solid rgba(255, 255, 255, 0.9);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 3;
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.3),
+                0 0 40px rgba(255, 193, 7, 0.2);
         }
 
         .profile-image:hover {
             transform: scale(1.05);
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.4),
+                0 0 60px rgba(255, 193, 7, 0.4);
+            border-color: #ffc107;
+        }
+
+        /* Professional rotating border ring */
+        .profile-border-ring {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border: 2px solid transparent;
+            border-top: 2px solid #ffc107;
+            border-right: 2px solid rgba(255, 193, 7, 0.6);
+            border-radius: 50%;
+            animation: professionalRotate 8s linear infinite;
+            z-index: 1;
+        }
+
+        /* Subtle glow effect */
+        .profile-glow {
+            position: absolute;
+            top: -12px;
+            left: -12px;
+            right: -12px;
+            bottom: -12px;
+            background: radial-gradient(circle, rgba(255, 193, 7, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: glowPulse 4s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        /* Professional floating animation */
+        @keyframes profileFloat {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            25% {
+                transform: translateY(-8px) rotate(1deg);
+            }
+
+            50% {
+                transform: translateY(-4px) rotate(0deg);
+            }
+
+            75% {
+                transform: translateY(-12px) rotate(-1deg);
+            }
+        }
+
+        /* Smooth border rotation */
+        @keyframes professionalRotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Subtle glow pulse */
+        @keyframes glowPulse {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.6;
+                transform: scale(1.05);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .profile-image {
+                width: 250px !important;
+                height: 250px !important;
+            }
+
+            .profile-image-wrapper {
+                animation: profileFloat 4s ease-in-out infinite;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .profile-image {
+                width: 200px !important;
+                height: 200px !important;
+            }
         }
 
         .min-vh-75 {
