@@ -54,7 +54,7 @@
                             </li>
                             <li class="text-light mb-1"><i class="fab fa-react text-info me-2"></i>React Native</li>
                             <li class="text-light mb-1"><i class="fas fa-mobile-alt text-primary me-2"></i>Flutter</li>
-                            <li class="text-light mb-1"><i class="fas fa-database text-warning me-2"></i>Firebase</li>
+                            <li class="text-light mb-1"><i class="fas fa-database text-success me-2"></i>PostgreSQL</li>
                         </ul>
                     </div>
                 </div>
