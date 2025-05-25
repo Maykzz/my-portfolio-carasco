@@ -2,6 +2,10 @@
 
 echo "🚀 Starting Laravel deployment on Railway..."
 
+# Install composer dependencies
+echo "📦 Installing dependencies..."
+composer install --no-dev --optimize-autoloader
+
 # Clear any existing caches
 php artisan config:clear
 php artisan route:clear
@@ -17,12 +21,6 @@ fi
 # Run database migrations
 echo "📦 Running database migrations..."
 php artisan migrate --force
-
-# Seed database if needed (only for fresh deployments)
-if [ "$RAILWAY_ENVIRONMENT" = "production" ]; then
-    echo "🌱 Seeding database..."
-    php artisan db:seed --class=PortfolioSeeder --force
-fi
 
 # Optimize Laravel for production
 echo "⚡ Optimizing Laravel for production..."
